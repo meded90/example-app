@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-// import Square from '../elements/square';
+import Square from '../elements/square';
 
 // A very simple page with a square on it.
 class HomePage extends PureComponent {
@@ -8,8 +8,9 @@ class HomePage extends PureComponent {
     };
 
     render() {
+        const {...rest} = this.props;
         return (
-            <div>test</div>
+            <Square {...rest}/>
         );
     }
 };

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -87,7 +87,7 @@ exports.default = function (app) {
     app.get('/', _main2.default);
 };
 
-var _main = __webpack_require__(6);
+var _main = __webpack_require__(7);
 
 var _main2 = _interopRequireDefault(_main);
 
@@ -136,7 +136,85 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import Square from '../elements/square';
+/**
+ A simple component that doubles in size on click
+ */
+var Square = function (_PureComponent) {
+    _inherits(Square, _PureComponent);
+
+    function Square(props, context) {
+        _classCallCheck(this, Square);
+
+        var _this = _possibleConstructorReturn(this, (Square.__proto__ || Object.getPrototypeOf(Square)).call(this, props, context));
+
+        _this.state = {
+            size: _this.props.size
+        };
+        _this.handleClick = _this.handleClick.bind(_this);
+        return _this;
+    }
+
+    _createClass(Square, [{
+        key: "handleClick",
+        value: function handleClick() {
+            if (this.state.size === this.props.size) {
+                this.setState({ size: this.props.size * 2 });
+            } else {
+                this.setState({ size: this.props.size });
+            }
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement("div", {
+                onClick: this.handleClick,
+                style: {
+                    width: this.state.size,
+                    height: this.state.size,
+                    backgroundColor: this.props.color
+                } });
+        }
+    }]);
+
+    return Square;
+}(_react.PureComponent);
+
+Square.defaultProps = {
+    size: 100,
+    color: "#D1ECE7"
+};
+exports.default = Square;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _square = __webpack_require__(5);
+
+var _square2 = _interopRequireDefault(_square);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // A very simple page with a square on it.
 var HomePage = function (_PureComponent) {
@@ -151,11 +229,9 @@ var HomePage = function (_PureComponent) {
     _createClass(HomePage, [{
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                'test'
-            );
+            var rest = _objectWithoutProperties(this.props, []);
+
+            return _react2.default.createElement(_square2.default, rest);
         }
     }]);
 
@@ -170,7 +246,7 @@ HomePage.defaultProps = {
 exports.default = HomePage;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -181,19 +257,41 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (req, res) {
-    (0, _index.reactRender)(res, _home2.default, { size: 200 });
+    (0, _index.reactRender)(res, _home2.default, _SquareModel2.default.getSize());
 };
 
-var _home = __webpack_require__(5);
+var _home = __webpack_require__(6);
 
 var _home2 = _interopRequireDefault(_home);
 
-var _index = __webpack_require__(7);
+var _index = __webpack_require__(9);
+
+var _SquareModel = __webpack_require__(8);
+
+var _SquareModel2 = _interopRequireDefault(_SquareModel);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 7 */
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    getSize: function getSize() {
+        return {
+            size: 200
+        };
+    }
+};
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -204,11 +302,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.reactRender = reactRender;
 
-var _server = __webpack_require__(9);
+var _server = __webpack_require__(11);
 
 var _server2 = _interopRequireDefault(_server);
 
-var _reactDom = __webpack_require__(8);
+var _reactDom = __webpack_require__(10);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -226,19 +324,19 @@ function reactRender(res, СomponentClass, props) {
 }
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom");
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

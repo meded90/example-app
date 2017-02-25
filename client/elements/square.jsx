@@ -4,17 +4,17 @@ import React, {PureComponent, PropTypes} from 'react';
  A simple component that doubles in size on click
  */
 class Square extends PureComponent {
-    getDefaultProps() {
-        return {
-            size: 100,
-            color: "#D1ECE7"
-        };
-    }
+    static defaultProps = {
+        size: 100,
+        color: "#D1ECE7"
+    };
 
-    getInitialState() {
-        return {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
             size: this.props.size,
-        };
+        }
+        this.handleClick = this.handleClick.bind(this)
     }
 
     handleClick() {
