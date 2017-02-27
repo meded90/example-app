@@ -1,7 +1,11 @@
 import HomePage from '../../client/pages/home';
-import {reactRender} from '../untils/index'
 import SquareModel from '../model/SquareModel'
+import ReactDOMServer from 'react-dom/server';
+import React from 'react';
 
 export default function (req, res) {
-    reactRender(res, HomePage, SquareModel.getSize());
+    const props = SquareModel.getSize();
+    const html = ReactDOMServer.renderToString(<HomePage {...props}/>);
+
+    res.render('main', {reactOutput: html,initData:JSON.stringify(props)});
 }

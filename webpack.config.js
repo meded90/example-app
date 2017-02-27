@@ -29,10 +29,13 @@ module.exports = [{
     },
 }, {
     entry: {
-        main:'./client/main.jsx'
+        main:'./client/main.jsx',
+        todo:'./client/todo.jsx'
     },
     output: {
         path: path.resolve(__dirname, 'public/js'),
+        libraryTarget: 'this',
+        library: '__init__',
         filename: '[name].bundle.js',
     },
     module: {

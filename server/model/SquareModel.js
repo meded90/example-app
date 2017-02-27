@@ -1,7 +1,7 @@
 export default  {
     getSize(){
         return {
-            size: 200
+            size: 210
         }
     }
 }
