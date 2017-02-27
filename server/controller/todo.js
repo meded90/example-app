@@ -1,4 +1,4 @@
-import InnerPage from '../../client/pages/inner';
+import InnerPage from '../../client/pages/todoPage';
 import TodoModel from '../model/TodoModel'
 import ReactDOMServer from 'react-dom/server';
 import React from 'react';

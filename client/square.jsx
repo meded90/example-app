@@ -3,7 +3,7 @@ This is the main file run used by browserify and is run in the browser.
 */
 
 import ReactDOM from 'react-dom';
-import HomePage from './pages/home';
+import HomePage from './pages/squarePage';
 import React, {PureComponent, PropTypes} from 'react';
 
 export default function (data) {

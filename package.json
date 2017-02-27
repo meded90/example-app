@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "description": "",
   "license": "MIT",
-  "main": "dist",
+  "main": "dist/server.bundle.js",
   "scripts": {
-    "dev": "nodemon --ignore node_modules/ --ignore public/  --ignore dist/ --exec \"webpack && node dist/server.bundle.js\"",
+    "dev": "webpack && node dist/server.bundle.js",
     "build": "babel server -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",

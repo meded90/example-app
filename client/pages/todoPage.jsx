@@ -1,9 +1,8 @@
 import React, {PureComponent, PropTypes} from 'react';
-import List from '../blocks/list/list';
-import Form from '../blocks/form/form';
+import List from '../components/list/list';
+import Form from '../components/form/form';
 
-// A very simple page with a square on it.
-class Inner extends PureComponent {
+class Todo extends PureComponent {
     static propTypes = {
         list: PropTypes.array,
     };
@@ -43,4 +42,4 @@ class Inner extends PureComponent {
     }
 }
 
-export default Inner;
+export default Todo;

@@ -3,7 +3,7 @@ var nodeExternals = require('webpack-node-externals');
 var path = require('path');
 
 module.exports = [{
-    entry: './server/index.js',
+    entry: './server/app.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'server.bundle.js',
@@ -29,7 +29,7 @@ module.exports = [{
     },
 }, {
     entry: {
-        main:'./client/main.jsx',
+        square:'./client/square.jsx',
         todo:'./client/todo.jsx'
     },
     output: {

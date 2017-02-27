@@ -90,8 +90,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (app) {
-    app.get('/', _main2.default);
-    app.get('/todo', _todo2.default);
+    app.get('/', _todo2.default);
+    app.get('/square', _main2.default);
 };
 
 var _main = __webpack_require__(12);
@@ -568,14 +568,14 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = function (req, res) {
     var props = _SquareModel2.default.getSize();
-    var html = _server2.default.renderToString(_react2.default.createElement(_home2.default, props));
+    var html = _server2.default.renderToString(_react2.default.createElement(_squarePage2.default, props));
 
-    res.render('main', { reactOutput: html, initData: JSON.stringify(props) });
+    res.render('square', { reactOutput: html, initData: JSON.stringify(props) });
 };
 
-var _home = __webpack_require__(10);
+var _squarePage = __webpack_require__(10);
 
-var _home2 = _interopRequireDefault(_home);
+var _squarePage2 = _interopRequireDefault(_squarePage);
 
 var _SquareModel = __webpack_require__(14);
 
@@ -604,14 +604,14 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = function (req, res) {
     var props = _TodoModel2.default.getList();
-    var html = _server2.default.renderToString(_react2.default.createElement(_inner2.default, props));
+    var html = _server2.default.renderToString(_react2.default.createElement(_todoPage2.default, props));
 
     res.render('todo', { reactOutput: html, initData: JSON.stringify(props) });
 };
 
-var _inner = __webpack_require__(11);
+var _todoPage = __webpack_require__(11);
 
-var _inner2 = _interopRequireDefault(_inner);
+var _todoPage2 = _interopRequireDefault(_todoPage);
 
 var _TodoModel = __webpack_require__(15);
 
